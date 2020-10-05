@@ -7,37 +7,52 @@ import 'package:provider/provider.dart';
 class CounterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var data = Provider.of<CounterModel>(context, listen: false);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.green[100],
         body: Column(
           children: [
-            Expanded(
+            ChangeNotifierProvider<CounterModel>(
+              create: (context) => CounterModel(),
+              child: Expanded(
                 child: Consumer<CounterModel>(
-                    builder: (context, count, __) => customContainer(
-                        text: count.getCount.toString(),
-                        decrement: () => count.decrement(),
-                        increment: () => count.increment()))),
-            Expanded(
+                  builder: (context, count, __) => customContainer(
+                      text: count.getCount.toString(),
+                      decrement: () => count.decrement(),
+                      increment: () => count.increment()),
+                ),
+              ),
+            ),
+            ChangeNotifierProvider<CounterModel>(
+              create: (context) => CounterModel(),
+              child: Expanded(
                 child: Consumer<CounterModel>(
-                    builder: (context, countOne, __) => customContainer(
-                        text: countOne.getCount.toString(),
-                        decrement: () => countOne.decrement(),
-                        increment: () => countOne.increment()))),
-            Expanded(
+                  builder: (context, count, __) => customContainer(
+                      text: count.getCount.toString(),
+                      decrement: () => count.decrement(),
+                      increment: () => count.increment()),
+                ),
+              ),
+            ),
+            ChangeNotifierProvider<CounterModel>(
+              create: (context) => CounterModel(),
+              child: Expanded(
                 child: Consumer<CounterModel>(
-                    builder: (context, countTwo, __) => customContainer(
-                        text: countTwo.getCount.toString(),
-                        decrement: () => countTwo.decrement(),
-                        increment: () => countTwo.increment()))),
+                  builder: (context, count, __) => customContainer(
+                      text: count.getCount.toString(),
+                      decrement: () => count.decrement(),
+                      increment: () => count.increment()),
+                ),
+              ),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
           label: Text('Re-Start'),
           icon: Icon(Icons.refresh),
-          onPressed: () {
-            Provider.of<CounterModel>(context, listen: false).reset();
-          },
+          onPressed: data.reset,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),

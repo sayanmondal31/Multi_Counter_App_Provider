@@ -9,13 +9,15 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CounterModel>(
-      create: (context) => CounterModel(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.green),
-        home: CounterScreen(),
-      ),
-    );
+    return  
+       ChangeNotifierProvider<CounterModel>(
+         create:(context)=> CounterModel(),
+                child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(primarySwatch: Colors.green),
+          home: CounterScreen(),
+      
+    ),
+       );
   }
 }

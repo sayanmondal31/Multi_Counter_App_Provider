@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:multi_counter_provider/model/counter_model.dart';
-import 'package:provider/provider.dart';
 
 Widget customContainer({String text, Function increment, Function decrement}) {
   return Container(
